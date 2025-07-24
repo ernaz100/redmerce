@@ -1,0 +1,28 @@
+{
+    "name": "redmerce",
+    "version": "1.0.0",
+    "description": "Redmerce - LLM & Beyond Seminar Platform",
+    "private": true,
+    "workspaces": [
+        "frontend"
+    ],
+    "scripts": {
+        "start": "./start.sh",
+        "frontend": "cd frontend && npm start",
+        "backend": "cd backend && python app.py",
+        "install:frontend": "cd frontend && npm install",
+        "install:backend": "cd backend && pip install -r requirements.txt",
+        "build": "cd frontend && npm run build"
+    },
+    "keywords": [
+        "llm",
+        "ai",
+        "agents",
+        "product-recommendations",
+        "react",
+        "flask",
+        "seminar"
+    ],
+    "author": "LLM & Beyond Seminar",
+    "license": "MIT"
+}
