@@ -59,7 +59,7 @@ function HomePage() {
                     Find Your Perfect Product
                 </Typography>
                 <Typography variant="h6" color="text.secondary" sx={{ mb: 4, maxWidth: 800, mx: 'auto' }}>
-                    Tell us what you're looking for, and our AI agents will search across multiple e-commerce sites
+                    Tell us what you're looking for, and we will search across the web
                     to find the best options for you. Get personalized recommendations with real-time data.
                 </Typography>
 

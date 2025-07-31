@@ -101,7 +101,7 @@ class AgentService:
             STEP 1: Find the best products based on a search query using Perplexity API
             
             Args:
-                search_query: The search query to find products (e.g., "best wireless headphones", "gaming laptop under $1000")
+                search_query: The search query to find products (e.g., "best wireless headphones", "gaming laptop under $1000"), will be embedded into this string: "Find the best products for: {search_query}. Ideally these products should be available in Germany. Return a JSON array where each product has these exact fields: 'name' (full product name with brand), 'brand', 'description', 'features' (array of key features) ,'pros', 'cons'. Focus on finding high-quality, well-reviewed products with clear, searchable product names. Make sure product names are detailed enough to find in shopping searches"
                 
             Returns:
                 JSON string containing basic product information including name, brand, description, and features
@@ -157,11 +157,12 @@ class AgentService:
                 f"Chat context: {json.dumps(chat_context)}\n\n" +
                 "Analyze the user's message and respond appropriately:\n\n" +
                 "- If they're being conversational or need clarification, respond directly with a JSON object containing empty products array.\n" +
-                "- If they want to shop for something specific, follow the MULTI-STEP PIPELINE:\n" +
-                "  1. First, call find_products() to search for products\n" +
+                "If they want to shop for something specific ask follow up questions to refine and understand better the users wants and needs" +
+                "Once you understand what the user wants to bzy- , follow the MULTI-STEP PIPELINE:\n" +
+                "  1. First, call find_products() to search for products and figure out pros and cons\n" +
                 "  2. Then, for each product found, call get_product_details() to get complete details\n" +
-                "  3. Finally, return a JSON response with the complete enriched product data. Make sure to provide details for every product that you recommend, what are the pros and cons for each product, and why you recommend it. \n\n" +
-                "Always complete both steps of the pipeline before responding with final results."
+                "  3. Finally, return a JSON response with the complete enriched product data. Make sure to communicate the details for every product that you recommend, what are the pros and cons for each product, and why you recommend it. Don't just write here are the products but give detailed pros and cons. \n\n" +
+                "Always complete all steps of the pipeline before responding with final results."
             )
             
             logger.info("Starting agent execution...")
@@ -258,7 +259,7 @@ class AgentService:
                 'messages': [
                     {
                         'role': 'user',
-                        'content': f"Find the 3-5 best products for: {search_query}. Ideally these products should be available in Germany. Return a JSON array where each product has these exact fields: 'name' (full product name with brand), 'brand', 'description', 'features' (array of key features). Focus on finding high-quality, well-reviewed products with clear, searchable product names. Make sure product names are detailed enough to find in shopping searches."
+                        'content': f"Find the best products for: {search_query}. Ideally these products should be available in Germany. Return a JSON array where each product has these exact fields: 'name' (full product name with brand), 'brand', 'description', 'features' (array of key features) ,'pros', 'cons'. Focus on finding high-quality, well-reviewed products with clear, searchable product names. Make sure product names are detailed enough to find in shopping searches."
                     }
                 ],
                 'max_tokens': 3000,
@@ -316,7 +317,7 @@ class AgentService:
                 'api_key': self.serp_api_key,
                 'engine': 'google_shopping',
                 'q': product_name,
-                'num': 5,  # Get top 5 results
+                'num': 1,  # Get top 5 results
                 'gl': 'de',                     # Country code for Germany
                 'hl': 'de',                     # Language set to German
                 'location': 'Germany'          # Optional, more precise targeting   

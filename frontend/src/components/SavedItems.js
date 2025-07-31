@@ -19,7 +19,6 @@ import {
     Link as LinkIcon,
     Delete as DeleteIcon,
     Favorite as FavoriteIcon,
-    ShoppingCart as CartIcon,
     Star as StarIcon,
     Monitor as MonitorIcon
 } from '@mui/icons-material';
@@ -163,17 +162,30 @@ const SavedItems = () => {
                                 }}
                             >
                                 {/* Product Image with Overlay */}
-                                <Box sx={{ position: 'relative' }}>
+                                <Box
+                                    sx={{
+                                        position: 'relative',
+                                        height: 240, // Match ProductRecommendation
+                                        overflow: 'hidden',
+                                        borderRadius: '8px 8px 0 0' // Match ProductRecommendation
+                                    }}
+                                >
+                                    {/* Product Image */}
                                     <CardMedia
                                         component="img"
-                                        height="220"
+                                        height="240"
+                                        width="100%"
                                         image={getValidImageUrl(product.image_url || product.image, product.name, product.brand)}
                                         alt={product.name}
                                         sx={{
-                                            objectFit: 'cover',
+                                            objectFit: 'contain', // Match ProductRecommendation
+                                            objectPosition: 'center',
+                                            width: '100%',
+                                            height: '100%',
                                             transition: 'transform 0.3s ease-in-out',
+                                            backgroundColor: 'grey.50',
                                             '&:hover': {
-                                                transform: 'scale(1.05)'
+                                                transform: 'scale(1.02)'
                                             }
                                         }}
                                         onError={(e) => {
@@ -185,15 +197,20 @@ const SavedItems = () => {
                                             e.target.nextSibling.style.display = 'none';
                                         }}
                                     />
+                                    {/* Fallback placeholder, same as ProductRecommendation */}
                                     <Box
                                         sx={{
-                                            height: 220,
-                                            bgcolor: 'grey.100',
+                                            height: '100%',
+                                            width: '100%',
+                                            bgcolor: 'grey.50',
                                             alignItems: 'center',
                                             justifyContent: 'center',
                                             display: 'none',
                                             flexDirection: 'column',
-                                            gap: 1
+                                            gap: 1,
+                                            position: 'absolute',
+                                            top: 0,
+                                            left: 0
                                         }}
                                     >
                                         <MonitorIcon sx={{ fontSize: 48, color: 'grey.400' }} />
@@ -296,28 +313,12 @@ const SavedItems = () => {
                                             color="primary"
                                             fullWidth
                                             endIcon={<LinkIcon />}
-                                            href={product.url}
+                                            href={product.purchase_link}
                                             target="_blank"
                                             rel="noopener noreferrer"
                                         >
                                             View Product
                                         </Button>
-
-                                        <Tooltip title="Add to cart">
-                                            <IconButton
-                                                color="secondary"
-                                                sx={{
-                                                    bgcolor: 'secondary.main',
-                                                    color: 'white',
-                                                    '&:hover': {
-                                                        bgcolor: 'secondary.dark',
-                                                        transform: 'scale(1.1)'
-                                                    }
-                                                }}
-                                            >
-                                                <CartIcon />
-                                            </IconButton>
-                                        </Tooltip>
                                     </Box>
                                 </CardContent>
                             </Card>

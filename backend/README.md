@@ -1,80 +1,128 @@
 # Redmerce Backend
 
-A Flask-based backend service for Redmerce, integrating smolagents, Perplexity API, and OpenAI GPT for intelligent product search, recommendations, and conversational shopping.
+A Flask-based backend service for Redmerce, integrating smolagents, Perplexity API, and OpenAI GPT for intelligent product search, recommendations, and conversational shopping experiences.
+
+## 🎯 Overview
+
+The Redmerce backend serves as the AI-powered engine that processes natural language queries, performs intelligent web searches, and generates personalized product recommendations. Built with Flask and integrated with cutting-edge AI technologies, it provides a robust REST API for the frontend application.
+
+### Key Technologies
+- **Flask**: Python web framework for REST API
+- **smolagents**: AI agent framework for intelligent reasoning
+- **Perplexity API**: Real-time web search capabilities
+- **OpenAI GPT**: Advanced language model processing
+- **SerpAPI**: Product link extraction and validation
 
 ---
 
 ## 🚀 Features
 
-- **AI-Powered Product Search**: Uses smolagents for reasoning and planning
-- **Real-Time Web Search**: Integrates Perplexity API for up-to-date product information
-- **Chat Interface**: Handles follow-up questions and product refinement
-- **Personalized Recommendations**: Generates recommendations based on user preferences
+### AI-Powered Functionality
+- **Intelligent Product Search**: smolagents orchestrate search strategies
+- **Real-Time Web Search**: Perplexity API provides live product data
+- **Natural Language Processing**: OpenAI GPT extracts and structures information
+- **Conversational AI**: Context-aware follow-up question handling
+- **Smart Recommendations**: AI-powered product ranking and filtering
+
+### Technical Features
 - **RESTful API**: Clean, well-documented endpoints
-- **Error Handling**: Standardized JSON errors
-- **CORS Support**: For seamless frontend integration
+- **Error Handling**: Standardized JSON error responses
+- **CORS Support**: Seamless frontend integration
+- **Environment Configuration**: Flexible API key management
+- **Logging**: Comprehensive request and error logging
+- **Validation**: Request data validation and sanitization
 
 ---
 
 ## 🏗️ Architecture
 
+### Service Architecture
 ```
 backend/
-├── app.py              # Main Flask application
-├── run.py              # Application runner
+├── app.py              # Main Flask application and routes
+├── run.py              # Application runner and configuration
 ├── requirements.txt    # Python dependencies
 ├── env.example         # Environment variables template
-├── services/           # Business logic services
+├── services/           # Business logic and AI services
 │   ├── __init__.py
 │   └── agent_service.py  # AI agent orchestration
-├── utils/              # Utility modules
-│   ├── __init__.py
-│   ├── error_handler.py  # Error handling utilities
-│   └── validators.py     # Request validation
+└── utils/              # Utility modules
+    ├── __init__.py
+    ├── error_handler.py  # Error handling utilities
+    └── validators.py     # Request validation
 ```
+
+### AI Integration Flow
+1. **User Query**: Natural language input received
+2. **Agent Planning**: smolagents analyze and plan search strategy
+3. **Web Search**: Perplexity API retrieves real-time product data
+4. **LLM Processing**: OpenAI GPT extracts and structures information
+5. **Response Formatting**: Structured data returned to frontend
 
 ---
 
-## 🛠️ Setup
+## 🛠️ Setup & Installation
 
 ### Prerequisites
-- Python 3.8 or higher
-- pip (Python package manager)
+- **Python** 3.8 or higher
+- **pip** (Python package manager)
+- **Virtual environment** (recommended)
 
-### Installation
-1. **Navigate to backend directory:**
-   ```bash
-   cd backend
-   ```
-2. **Create a virtual environment:**
-   ```bash
-   python -m venv venv
-   source venv/bin/activate  # On Windows: venv\Scripts\activate
-   ```
-3. **Install dependencies:**
-   ```bash
-   pip install -r requirements.txt
-   ```
-4. **Set up environment variables:**
-   ```bash
-   cp env.example .env
-   # Edit .env and add your API keys
-   ```
+### Required API Keys
+- **OpenAI API Key**: For GPT model processing
+- **Perplexity API Key**: For web search functionality
+- **SerpAPI Key**: For product link extraction (optional)
 
-### Environment Variables
-- `FLASK_ENV` (development/production)
-- `SECRET_KEY` (any random string)
-- `PORT` (default: 5001)
-- `PERPLEXITY_API_KEY`, `OPENAI_API_KEY` (required)
+### Installation Steps
+
+#### 1. Environment Setup
+```bash
+# Navigate to backend directory
+cd backend
+
+# Create virtual environment
+python -m venv venv
+
+# Activate virtual environment
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+```
+
+#### 2. Dependencies Installation
+```bash
+# Install required packages
+pip install -r requirements.txt
+```
+
+#### 3. Environment Configuration
+```bash
+# Copy environment template
+cp env.example .env
+
+# Edit .env file with your API keys
+nano .env  # or use your preferred editor
+```
+
+#### 4. Environment Variables
+Create a `.env` file with the following variables:
+```env
+FLASK_ENV=development
+SECRET_KEY=your-secret-key-here
+PORT=5001
+PERPLEXITY_API_KEY=your-perplexity-api-key
+OPENAI_API_KEY=your-openai-api-key
+SERP_API_KEY=your-serp-api-key
+```
 
 ---
 
 ## 🚦 Running the Backend
 
-### Development
+### Development Mode
 ```bash
-python run.py
+# Start the Flask development server
+python app.py
 ```
+
 Or with Flask directly:
 ```bash
 export FLASK_APP=app.py
@@ -82,61 +130,106 @@ export FLASK_ENV=development
 flask run --host=0.0.0.0 --port=5001
 ```
 
-### Production
+### Production Mode
 ```bash
+# Using Gunicorn (recommended for production)
 gunicorn -w 4 -b 0.0.0.0:5001 app:create_app()
 ```
 
----
-
-## 🧩 API Endpoints
-
-- `GET /health` — Health check
-- `POST /api/search` — Product search (query, filters)
-- `POST /api/chat` — Chat/follow-up (message, context)
-- `POST /api/recommendations` — Personalized recommendations
-
-All endpoints return JSON responses. See below for example requests and responses.
-
----
-
-## 🧠 Services Overview
-
-- **agent_service.py**: Orchestrates smolagents, Perplexity, and OpenAI for product search and recommendations
-- **error_handler.py**: Standardized error responses
-- **validators.py**: Request validation
-
----
-
-## 🧪 Example Requests
-
-**Health Check:**
+### Health Check
+Verify the service is running:
 ```bash
 curl http://localhost:5001/health
 ```
 
-**Chat Follow-up:**
-```bash
-curl -X POST http://localhost:5001/api/chat \
-  -H "Content-Type: application/json" \
-  -d '{"message": "Show me cheaper alternatives"}'
+---
+
+## 🧩 API Documentation
+
+### Endpoints Overview
+
+#### Health Check
+```http
+GET /health
+```
+**Response:**
+```json
+{
+  "status": "healthy",
+  "timestamp": "2025-01-27T10:30:00.000Z",
+  "service": "redmerce-backend"
+}
 ```
 
----
+#### Chat Interface
+```http
+POST /api/chat
+Content-Type: application/json
+```
+**Request Body:**
+```json
+{
+  "message": "Show me Samsung 4K TVs under $1000",
+  "context": {
+    "original_query": "Samsung 4K TV",
+    "chat_history": [
+      {
+        "role": "user",
+        "content": "Find me a Samsung TV"
+      },
+      {
+        "role": "assistant", 
+        "content": "I found several Samsung TVs..."
+      }
+    ],
+    "current_products": [
+      {
+        "name": "Samsung QN65Q80T",
+        "brand": "Samsung",
+        "price": 1299.99,
+        "currency": "USD",
+        "image": "https://example.com/image.jpg",
+        "url": "https://example.com/product",
+        "features": ["4K", "QLED", "Smart TV"],
+        "rating": 4.5,
+        "description": "65-inch QLED 4K Smart TV",
+        "thumbnail": "https://example.com/thumb.jpg",
+        "link": "https://example.com/buy"
+      }
+    ]
+  }
+}
+```
 
-## 🖥️ Integration with Frontend
-- **CORS**: Configured for `http://localhost:3000`
-- **Proxy**: Frontend proxies requests to backend
-- **Response Format**: Structured for easy frontend consumption
+**Response:**
+```json
+{
+  "success": true,
+  "message": "Here are some Samsung 4K TVs under $1000:",
+  "products": [
+    {
+      "name": "Samsung UN65TU7000",
+      "brand": "Samsung", 
+      "price": 799.99,
+      "currency": "USD",
+      "image": "https://example.com/image.jpg",
+      "url": "https://example.com/product",
+      "features": ["4K", "Crystal Display", "Smart TV"],
+      "rating": 4.2,
+      "description": "65-inch 4K Ultra HD Smart TV",
+      "thumbnail": "https://example.com/thumb.jpg",
+      "link": "https://example.com/buy"
+    }
+  ],
+  "context": {
+    "original_query": "Samsung 4K TV",
+    "chat_history": [...]
+  }
+}
+```
 
----
-
-## 🛡️ Error Handling
-- **400 Bad Request**: Invalid request format or data
-- **404 Not Found**: Endpoint not found
-- **500 Internal Server Error**: Server-side errors
-
-All errors return standardized JSON:
+### Error Responses
+All endpoints return standardized error responses:
 ```json
 {
   "error": {
@@ -150,43 +243,221 @@ All errors return standardized JSON:
 
 ---
 
-## 🧑‍💻 Development Notes
-- Add new endpoints in `app.py`
-- Implement business logic in `services/`
-- Validate requests in `utils/validators.py`
-- Add comments for clarity
+## 🧠 Services Overview
+
+### AgentService (services/agent_service.py)
+**Core AI Orchestration Service**
+- **Purpose**: Coordinates smolagents, Perplexity, and OpenAI
+- **Key Methods**:
+  - `process_message()`: Main chat processing
+  - `search_products()`: Product search orchestration
+  - `extract_product_info()`: Product data extraction
+
+### ErrorHandler (utils/error_handler.py)
+**Error Management Utilities**
+- **Purpose**: Standardized error handling and responses
+- **Features**:
+  - Consistent error format
+  - Logging integration
+  - User-friendly messages
+
+### Validators (utils/validators.py)
+**Request Validation**
+- **Purpose**: Validate incoming API requests
+- **Features**:
+  - Data type validation
+  - Required field checking
+  - Sanitization
 
 ---
 
 ## 🧪 Testing
-- Use `curl` or Postman to test endpoints
-- Add unit tests as needed (pytest recommended)
+
+### API Testing
+```bash
+# Health check
+curl http://localhost:5001/health
+
+# Chat endpoint test
+curl -X POST http://localhost:5001/api/chat \
+  -H "Content-Type: application/json" \
+  -d '{"message": "Find me a laptop under $500"}'
+
+# Test with context
+curl -X POST http://localhost:5001/api/chat \
+  -H "Content-Type: application/json" \
+  -d '{
+    "message": "Show me cheaper alternatives",
+    "context": {
+      "original_query": "gaming laptop",
+      "chat_history": [],
+      "current_products": []
+    }
+  }'
+```
+
+### Integration Testing
+1. **Start the backend**: `python app.py`
+2. **Test health endpoint**: Verify service is running
+3. **Test chat functionality**: Send various product queries
+4. **Test error handling**: Send invalid requests
+5. **Test CORS**: Verify frontend can communicate
+
+---
+
+## 🔧 Development
+
+### Code Style
+- **PEP 8**: Follow Python style guidelines
+- **Comments**: Comprehensive documentation for all functions
+- **Type Hints**: Use type annotations where appropriate
+- **Error Handling**: Robust exception handling
+
+### Adding Features
+1. **New Endpoints**: Add routes in `app.py`
+2. **Business Logic**: Implement in `services/` directory
+3. **Validation**: Add validators in `utils/validators.py`
+4. **Error Handling**: Use `utils/error_handler.py`
+5. **Testing**: Test thoroughly before deployment
+
+### Best Practices
+- **Environment Variables**: Never hardcode API keys
+- **Logging**: Use appropriate log levels
+- **Error Messages**: Provide helpful error information
+- **Security**: Validate and sanitize all inputs
+- **Performance**: Optimize database queries and API calls
+
+---
+
+## 🛡️ Error Handling
+
+### Common Error Types
+- **400 Bad Request**: Invalid request format or data
+- **404 Not Found**: Endpoint not found
+- **500 Internal Server Error**: Server-side errors
+- **503 Service Unavailable**: External API failures
+
+### Error Response Format
+```json
+{
+  "error": {
+    "message": "Detailed error description",
+    "type": "ValidationError|APIError|ServerError",
+    "context": "Specific location or operation"
+  },
+  "success": false
+}
+```
+
+---
+
+## 🚀 Performance Optimization
+
+### API Optimization
+- **Caching**: Cache frequently requested data
+- **Rate Limiting**: Implement API rate limiting
+- **Connection Pooling**: Optimize database connections
+- **Async Processing**: Use async for I/O operations
+
+### Monitoring
+- **Health Checks**: Regular service monitoring
+- **Logging**: Comprehensive request and error logging
+- **Metrics**: Track API performance and usage
 
 ---
 
 ## 🛠️ Troubleshooting
-- **API Key Errors**: Ensure all required API keys are set in `.env`
-- **Port Conflicts**: Change `PORT` in `.env` if 5001 is in use
-- **CORS Issues**: Check CORS config in `app.py`
-- **Debug Mode**: Set `FLASK_ENV=development` for detailed errors
+
+### Common Issues
+
+#### API Key Errors
+```bash
+# Check environment variables
+echo $OPENAI_API_KEY
+echo $PERPLEXITY_API_KEY
+
+# Verify .env file
+cat .env
+```
+
+#### Port Conflicts
+```bash
+# Check if port is in use
+lsof -i :5001
+
+# Change port in .env
+PORT=5002
+```
+
+#### CORS Issues
+- Verify CORS configuration in `app.py`
+- Check frontend proxy settings
+- Ensure correct origin URLs
+
+#### Dependency Issues
+```bash
+# Reinstall dependencies
+pip uninstall -r requirements.txt
+pip install -r requirements.txt
+```
+
+### Debug Mode
+```bash
+# Enable debug mode
+export FLASK_ENV=development
+export FLASK_DEBUG=1
+python app.py
+```
 
 ---
 
 ## 🤝 Contributing
-1. Follow code structure and commenting style
-2. Add error handling
-3. Update documentation
-4. Test thoroughly
+
+### Development Workflow
+1. **Fork** the repository
+2. **Create** a feature branch
+3. **Implement** changes with proper comments
+4. **Test** thoroughly
+5. **Submit** a pull request
+
+### Code Quality Guidelines
+- Follow PEP 8 style guidelines
+- Add comprehensive comments
+- Include error handling
+- Write tests for new features
+- Update documentation
 
 ---
 
 ## 📄 License
-MIT License (see LICENSE)
+
+This project is licensed under the MIT License - see the [LICENSE](../LICENSE) file for details.
 
 ---
 
 ## 🙏 Acknowledgments
-- Smolagents (AI agent framework)
-- Perplexity (web search)
-- OpenAI (GPT models)
-- Flask (backend) 
+
+### Technologies & Libraries
+- **Flask**: Python web framework
+- **smolagents**: AI agent framework for intelligent reasoning
+- **Perplexity API**: Real-time web search capabilities
+- **OpenAI GPT**: Advanced language model processing
+- **SerpAPI**: Product link extraction
+- **Gunicorn**: Production WSGI server
+
+### Academic Context
+Developed as part of the **LLM's and Beyond '25** seminar, demonstrating practical applications of AI agents and Large Language Models in modern software development.
+
+---
+
+## 📞 Support
+
+For questions, issues, or contributions:
+- Check the main [README.md](../README.md)
+- Review frontend documentation in `frontend/README.md`
+- Create an issue in the repository
+- Contact the development team
+
+---
+
+*Redmerce Backend - AI-powered e-commerce intelligence engine* 

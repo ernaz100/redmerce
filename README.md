@@ -2,164 +2,327 @@
 
 A modern e-commerce product recommendation platform leveraging AI agents (smolagents), Perplexity API, and OpenAI GPT models to provide intelligent, real-time product suggestions and conversational shopping experiences.
 
+## 🎯 Project Overview
+
+Redmerce demonstrates the power of Large Language Models (LLMs) and AI agents in creating intelligent e-commerce experiences. The platform combines multiple AI technologies to provide users with personalized product recommendations through natural language conversations.
+
+### Key Technologies
+- **AI Agents**: smolagents framework for intelligent reasoning and planning
+- **Web Search**: Perplexity API for real-time product data retrieval
+- **LLM Processing**: OpenAI GPT models for product information extraction and analysis
+- **Frontend**: React with Material UI for modern, responsive interface
+- **Backend**: Flask REST API for seamless integration
+
 ---
 
 ## 🚀 Features
 
-- **AI-Powered Product Search**: Uses smolagents for intelligent reasoning and planning
-- **Real-Time Web Search**: Perplexity API integration for live product data
-- **LLM-Powered Extraction**: OpenAI GPT models for product information extraction
-- **Smart Filtering**: Filter by price, features, and brand
-- **Relevance Ranking**: AI-powered product ranking
-- **Conversational Chat**: Natural language follow-up and refinement
-- **Saved Items**: Save products for later viewing
-- **Trusted Sources**: Curated e-commerce domains
+### Core Functionality
+- **AI-Powered Product Search**: Intelligent product discovery using smolagents
+- **Real-Time Web Search**: Live product data from trusted e-commerce sources
+- **Conversational Interface**: Natural language follow-up and product refinement
+- **Smart Filtering**: Filter by price, features, brand, and other criteria
+- **Relevance Ranking**: AI-powered product ranking based on user preferences
+- **Saved Items**: Save and manage favorite products locally
+- **Trusted Sources**: Curated e-commerce domains for reliable product data
+
+### Technical Features
+- **Responsive Design**: Mobile-friendly interface with Material UI
+- **Real-time Updates**: Live product information and pricing
+- **Error Handling**: Robust error management and user feedback
+- **CORS Support**: Seamless frontend-backend integration
+- **Environment Configuration**: Flexible API key management
 
 ---
 
 ## 🏗️ Architecture Overview
 
-- **Frontend**: React (Material UI), provides chat, product recommendations, and saved items management
-- **Backend**: Flask, exposes RESTful API, integrates smolagents, Perplexity, and OpenAI
+### System Architecture
+```
+┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
+│   React Frontend│    │   Flask Backend │    │  External APIs  │
+│                 │    │                 │    │                 │
+│ • Chat Interface│◄──►│ • AI Agent      │◄──►│ • Perplexity    │
+│ • Product Cards │    │ • Web Search    │    │ • OpenAI GPT    │
+│ • Saved Items   │    │ • Data Processing│   │ • SerpAPI       │
+│ • Material UI   │    │ • REST API      │    │                 │
+└─────────────────┘    └─────────────────┘    └─────────────────┘
+```
 
 ### Data Flow
-
-```mermaid
-graph TD;
-  User-->|Query/Chat|Frontend-->|API Calls|Backend-->|Web Search/AI|External_APIs
-  Backend-->|Recommendations|Frontend-->|Display|User
-```
+1. **User Input**: Natural language query via chat interface
+2. **AI Processing**: smolagents analyze and plan search strategy
+3. **Web Search**: Perplexity API retrieves real-time product data
+4. **LLM Analysis**: OpenAI GPT extracts and structures product information
+5. **Response**: Formatted recommendations returned to user
+6. **Interaction**: Follow-up questions refine and improve results
 
 ---
 
-## 🛠️ Installation
+## 🛠️ Installation & Setup
 
 ### Prerequisites
-- Python 3.8+
-- Node.js 16+
-- OpenAI API key
-- Perplexity API key
+- **Node.js** 16+ (for frontend)
+- **Python** 3.8+ (for backend)
+- **npm** (Node package manager)
+- **pip** (Python package manager)
 
-### Backend Setup
+### Required API Keys
+- **OpenAI API Key**: For GPT model processing
+- **Perplexity API Key**: For web search functionality
+- **SerpAPI Key**: For product link extraction (optional)
+
+### Quick Start
 ```bash
-cd backend
-python -m venv venv
-source venv/bin/activate
-pip install -r requirements.txt
-cp env.example .env  # Add your API keys to .env
+# Clone the repository
+git clone <repository-url>
+cd redmerce
+
+# Start the entire application
+./start.sh
 ```
 
-### Frontend Setup
+### Manual Setup
+
+#### Backend Setup
+```bash
+cd backend
+
+# Create virtual environment
+python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+
+# Install dependencies
+pip install -r requirements.txt
+
+# Configure environment
+cp env.example .env
+# Edit .env and add your API keys
+
+# Start backend
+python app.py
+```
+
+#### Frontend Setup
 ```bash
 cd frontend
+
+# Install dependencies
 npm install
+
+# Start frontend
+npm start
+```
+
+### Environment Configuration
+Create a `.env` file in the `backend/` directory:
+```env
+FLASK_ENV=development
+SECRET_KEY=your-secret-key
+PORT=5001
+PERPLEXITY_API_KEY=your-perplexity-api-key
+OPENAI_API_KEY=your-openai-api-key
+SERP_API_KEY=your-serp-api-key
 ```
 
 ---
 
 ## 🚦 Usage
 
-### Start the Application
+### Starting the Application
 ```bash
-./start.sh  # Starts both backend and frontend
-```
-Or manually:
-```bash
-# Terminal 1
-cd backend && python run.py
-# Terminal 2
+# Option 1: Use the startup script (recommended)
+./start.sh
+
+# Option 2: Start manually
+# Terminal 1 - Backend
+cd backend && python app.py
+
+# Terminal 2 - Frontend  
 cd frontend && npm start
 ```
 
----
+### Accessing the Application
+- **Frontend**: http://localhost:3000
+- **Backend API**: http://localhost:5001
+- **Health Check**: http://localhost:5001/health
 
-## 🧩 API Endpoints (Backend)
-- `POST /api/chat` - Agent Interface
-- `GET /health` - Health check
-
----
-
-## 🖥️ Frontend Features
-- **Home Page**: Entry point, product search
-- **Chat Page**: Conversational product refinement
-- **Saved Items**: View and manage saved products
-- **Material UI**: Modern, responsive design
-- **Persistent Storage**: Saved items stored in browser
+### Example Usage
+1. **Initial Search**: Enter a product query like "Samsung 4K TV"
+2. **Review Results**: Browse AI-recommended products with details
+3. **Refine Search**: Ask follow-up questions like "Show me cheaper alternatives"
+4. **Save Items**: Click the save button on products you like
+5. **View Saved**: Access saved items from the navigation menu
 
 ---
 
-## 🧠 Backend Features
-- **AI Agent Orchestration**: smolagents for reasoning
-- **Web Search**: Perplexity API for real-time data
-- **Product Analysis**: OpenAI GPT for extraction
-- **Product Extraction**: SerpAPI to find real product links
+## 🧩 API Documentation
+
+### Backend Endpoints
+
+#### Health Check
+```http
+GET /health
+```
+Returns service status and timestamp.
+
+#### Chat Interface
+```http
+POST /api/chat
+Content-Type: application/json
+
+{
+  "message": "Show me Samsung 4K TVs under $1000",
+  "context": {
+    "original_query": "Samsung 4K TV",
+    "chat_history": [...],
+    "current_products": [...]
+  }
+}
+```
+
+### Example API Calls
+```bash
+# Health check
+curl http://localhost:5001/health
+
+# Chat request
+curl -X POST http://localhost:5001/api/chat \
+  -H "Content-Type: application/json" \
+  -d '{"message": "Show me cheaper alternatives"}'
+```
 
 ---
 
 ## 🗂️ Project Structure
 ```
 redmerce/
-├── frontend/         # React frontend
+├── frontend/                 # React frontend application
+│   ├── public/
+│   │   ├── index.html       # Main HTML template
+│   │   └── favicon.png      # Application icon
 │   ├── src/
-│   │   ├── components/  # Chat, ProductRecommendation, SavedItems, etc.
-│   │   └── App.js
-│   └── package.json
-├── backend/          # Flask backend
-│   ├── services/     # agent_service.py,
-│   ├── utils/        # error_handler.py, validators.py
-│   ├── app.py
-│   ├── run.py
-│   └── requirements.txt
-├── start.sh          # Startup script
-└── README.md         # This file
+│   │   ├── components/      # React components
+│   │   │   ├── ChatInterface.js      # Chat UI and logic
+│   │   │   ├── ChatPage.js          # Main chat page
+│   │   │   ├── HomePage.js          # Landing page
+│   │   │   ├── ProductRecommendation.js  # Product display
+│   │   │   └── SavedItems.js        # Saved items management
+│   │   ├── App.js           # Main application component
+│   │   ├── index.js         # Application entry point
+│   │   └── index.css        # Global styles
+│   ├── package.json         # Frontend dependencies
+│   └── README.md            # Frontend documentation
+├── backend/                  # Flask backend application
+│   ├── services/            # Business logic services
+│   │   ├── __init__.py
+│   │   └── agent_service.py # AI agent orchestration
+│   ├── utils/               # Utility modules
+│   │   ├── __init__.py
+│   │   ├── error_handler.py # Error handling utilities
+│   │   └── validators.py    # Request validation
+│   ├── app.py               # Main Flask application
+│   ├── run.py               # Application runner
+│   ├── requirements.txt     # Python dependencies
+│   ├── env.example          # Environment template
+│   └── README.md            # Backend documentation
+├── start.sh                 # Application startup script
+├── package.json             # Root package configuration
+└── README.md                # This file
 ```
 
 ---
 
 ## 🧪 Testing
 
-### Backend
+### Backend Testing
 ```bash
+# Health check
 curl http://localhost:5001/health
-curl -X POST http://localhost:5001/api/search -H "Content-Type: application/json" -d '{"query": "Samsung 4K TV"}'
+
+# Chat endpoint test
+curl -X POST http://localhost:5001/api/chat \
+  -H "Content-Type: application/json" \
+  -d '{"message": "Find me a laptop"}'
 ```
 
-### Frontend
-Start both services and test via browser at [http://localhost:3000](http://localhost:3000)
+### Frontend Testing
+1. Start both services using `./start.sh`
+2. Open http://localhost:3000 in your browser
+3. Test the chat interface with various queries
+4. Verify saved items functionality
+5. Test responsive design on different screen sizes
 
 ---
 
-## 🔍 Example Usage
+## 🔧 Development
 
-**Product Search:**
-```bash
-curl -X POST http://localhost:5001/api/search -H "Content-Type: application/json" -d '{"query": "Samsung 4K TV"}'
-```
+### Code Style
+- **Python**: Follow PEP 8 guidelines with comprehensive comments
+- **JavaScript**: Use ES6+ features with clear variable naming
+- **Comments**: All major functions and complex logic should be documented
 
-**Chat Follow-up:**
-```bash
-curl -X POST http://localhost:5001/api/chat -H "Content-Type: application/json" -d '{"message": "Show me cheaper alternatives"}'
-```
+### Adding Features
+1. **Backend**: Add new endpoints in `app.py`, implement logic in `services/`
+2. **Frontend**: Create new components in `src/components/`
+3. **Testing**: Test thoroughly before submitting changes
+4. **Documentation**: Update relevant README files
+
+### Troubleshooting
+- **API Key Issues**: Ensure all required API keys are set in `.env`
+- **Port Conflicts**: Change `PORT` in backend `.env` if needed
+- **CORS Errors**: Verify CORS configuration in `app.py`
+- **Dependency Issues**: Reinstall dependencies if needed
 
 ---
 
 ## 🤝 Contributing
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes (with comments!)
-4. Add tests if possible
-5. Submit a pull request
+
+We welcome contributions to improve Redmerce! Please follow these guidelines:
+
+1. **Fork** the repository
+2. **Create** a feature branch (`git checkout -b feature/amazing-feature`)
+3. **Commit** your changes with clear messages (`git commit -m 'Add amazing feature'`)
+4. **Push** to the branch (`git push origin feature/amazing-feature`)
+5. **Open** a Pull Request
+
+### Development Guidelines
+- Add comprehensive comments to all code
+- Test thoroughly before submitting
+- Follow existing code style and structure
+- Update documentation for any new features
+- Ensure error handling is robust
 
 ---
 
 ## 📄 License
-MIT License (see LICENSE)
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ---
 
 ## 🙏 Acknowledgments
-- Smolagents (AI agent framework)
-- Perplexity (web search)
-- OpenAI (GPT models)
-- Flask (backend)
-- Material UI (frontend) 
+
+### Technologies & Libraries
+- **smolagents**: AI agent framework for intelligent reasoning
+- **Perplexity API**: Real-time web search capabilities
+- **OpenAI GPT**: Advanced language model processing
+- **Flask**: Python web framework
+- **React**: Frontend library
+- **Material UI**: Modern UI component library
+
+### Academic Context
+This project was developed as part of the **LLM's and Beyond '25** seminar, exploring the practical applications of Large Language Models and AI agents in modern software development.
+
+---
+
+## 📞 Support
+
+For questions, issues, or contributions:
+- Create an issue in the repository
+- Contact the development team
+- Review the documentation in `frontend/README.md` and `backend/README.md`
+
+---
+
+*Redmerce - Empowering e-commerce with AI-driven intelligence* 
