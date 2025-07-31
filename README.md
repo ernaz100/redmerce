@@ -2,7 +2,7 @@
 
 A modern e-commerce product recommendation platform leveraging AI agents (smolagents), Perplexity API, and OpenAI GPT models to provide intelligent, real-time product suggestions and conversational shopping experiences.
 
-## 🎯 Project Overview
+## Project Overview
 
 Redmerce demonstrates the power of Large Language Models (LLMs) and AI agents in creating intelligent e-commerce experiences. The platform combines multiple AI technologies to provide users with personalized product recommendations through natural language conversations.
 
@@ -15,7 +15,7 @@ Redmerce demonstrates the power of Large Language Models (LLMs) and AI agents in
 
 ---
 
-## 🚀 Features
+##  Features
 
 ### Core Functionality
 - **AI-Powered Product Search**: Intelligent product discovery using smolagents
@@ -127,7 +127,7 @@ SERP_API_KEY=your-serp-api-key
 
 ---
 
-## 🚦 Usage
+##  Usage
 
 ### Starting the Application
 ```bash
@@ -156,7 +156,7 @@ cd frontend && npm start
 
 ---
 
-## 🧩 API Documentation
+## API Documentation
 
 ### Backend Endpoints
 
@@ -233,7 +233,7 @@ redmerce/
 
 ---
 
-## 🧪 Testing
+## Testing
 
 ### Backend Testing
 ```bash
@@ -255,74 +255,9 @@ curl -X POST http://localhost:5001/api/chat \
 
 ---
 
-## 🔧 Development
-
-### Code Style
-- **Python**: Follow PEP 8 guidelines with comprehensive comments
-- **JavaScript**: Use ES6+ features with clear variable naming
-- **Comments**: All major functions and complex logic should be documented
-
-### Adding Features
-1. **Backend**: Add new endpoints in `app.py`, implement logic in `services/`
-2. **Frontend**: Create new components in `src/components/`
-3. **Testing**: Test thoroughly before submitting changes
-4. **Documentation**: Update relevant README files
-
-### Troubleshooting
-- **API Key Issues**: Ensure all required API keys are set in `.env`
-- **Port Conflicts**: Change `PORT` in backend `.env` if needed
-- **CORS Errors**: Verify CORS configuration in `app.py`
-- **Dependency Issues**: Reinstall dependencies if needed
-
----
-
-## 🤝 Contributing
-
-We welcome contributions to improve Redmerce! Please follow these guidelines:
-
-1. **Fork** the repository
-2. **Create** a feature branch (`git checkout -b feature/amazing-feature`)
-3. **Commit** your changes with clear messages (`git commit -m 'Add amazing feature'`)
-4. **Push** to the branch (`git push origin feature/amazing-feature`)
-5. **Open** a Pull Request
-
-### Development Guidelines
-- Add comprehensive comments to all code
-- Test thoroughly before submitting
-- Follow existing code style and structure
-- Update documentation for any new features
-- Ensure error handling is robust
-
----
-
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
----
-
-## 🙏 Acknowledgments
-
-### Technologies & Libraries
-- **smolagents**: AI agent framework for intelligent reasoning
-- **Perplexity API**: Real-time web search capabilities
-- **OpenAI GPT**: Advanced language model processing
-- **Flask**: Python web framework
-- **React**: Frontend library
-- **Material UI**: Modern UI component library
 
 ### Academic Context
 This project was developed as part of the **LLM's and Beyond '25** seminar, exploring the practical applications of Large Language Models and AI agents in modern software development.
 
 ---
 
-## 📞 Support
-
-For questions, issues, or contributions:
-- Create an issue in the repository
-- Contact the development team
-- Review the documentation in `frontend/README.md` and `backend/README.md`
-
----
-
-*Redmerce - Empowering e-commerce with AI-driven intelligence* 

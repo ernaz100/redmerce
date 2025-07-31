@@ -2,7 +2,7 @@
 
 A modern React-based frontend for the Redmerce platform, providing a conversational e-commerce experience powered by AI product recommendations and real-time web search.
 
-## 🎯 Overview
+## Overview
 
 The Redmerce frontend is built with React and Material UI, offering an intuitive and responsive interface for AI-powered product discovery. Users can interact with the platform through natural language conversations, browse intelligent product recommendations, and manage their saved items.
 
@@ -15,7 +15,7 @@ The Redmerce frontend is built with React and Material UI, offering an intuitive
 
 ---
 
-## 🚀 Features
+## Features
 
 ### User Experience
 - **Intuitive Chat Interface**: Natural language queries and follow-up questions
@@ -33,7 +33,7 @@ The Redmerce frontend is built with React and Material UI, offering an intuitive
 
 ---
 
-## 🏗️ Architecture
+## Architecture
 
 ### Component Structure
 ```
@@ -58,7 +58,7 @@ src/
 
 ---
 
-## 🛠️ Setup & Installation
+## Setup & Installation
 
 ### Prerequisites
 - **Node.js** 16+ 
@@ -88,7 +88,7 @@ The frontend automatically proxies API requests to the backend. Ensure the backe
 
 ---
 
-## 🚦 Usage
+## Usage
 
 ### Development Server
 ```bash
@@ -112,7 +112,7 @@ Runs test suite with Jest and React Testing Library.
 
 ---
 
-## 🧩 Component Documentation
+## Component Documentation
 
 ### App.js
 **Main Application Component**
@@ -152,7 +152,7 @@ Runs test suite with Jest and React Testing Library.
 
 ---
 
-## 🗂️ Project Structure
+## Project Structure
 ```
 frontend/
 ├── public/
@@ -174,7 +174,7 @@ frontend/
 
 ---
 
-## 🧪 Testing
+## Testing
 
 ### Manual Testing
 1. **Start the application**: `npm start`
@@ -197,87 +197,7 @@ npm test -- --coverage
 
 ---
 
-## 🔧 Development
-
-### Code Style
-- **ES6+ Features**: Use modern JavaScript syntax
-- **Functional Components**: Prefer hooks over class components
-- **Material UI**: Follow Material Design principles
-- **Comments**: Document complex logic and component purposes
-
-### Adding Features
-1. **New Components**: Create in `src/components/`
-2. **Styling**: Use Material UI components and theme
-3. **State Management**: Use React hooks for local state
-4. **API Integration**: Add new API calls in components
-5. **Testing**: Add tests for new functionality
-
-### Best Practices
-- **Component Composition**: Break down complex components
-- **Error Boundaries**: Handle errors gracefully
-- **Loading States**: Provide feedback during API calls
-- **Accessibility**: Follow WCAG guidelines
-- **Performance**: Optimize re-renders and bundle size
-
----
-
-## 🛡️ Error Handling
-
-### API Errors
-- Network connectivity issues
-- Backend service unavailability
-- Invalid API responses
-- Rate limiting
-
-### User Experience
-- Clear error messages
-- Retry mechanisms
-- Fallback content
-- Loading indicators
-
----
-
-## 🚀 Performance Optimization
-
-### Bundle Optimization
-- Code splitting with React.lazy()
-- Tree shaking for unused code
-- Image optimization
-- Gzip compression
-
-### Runtime Performance
-- Memoization with React.memo()
-- Optimized re-renders
-- Efficient state updates
-- Lazy loading of components
-
----
-
-## 🤝 Contributing
-
-### Development Workflow
-1. **Fork** the repository
-2. **Create** a feature branch
-3. **Implement** changes with proper comments
-4. **Test** thoroughly
-5. **Submit** a pull request
-
-### Code Quality
-- Follow existing code style
-- Add comprehensive comments
-- Include error handling
-- Write tests for new features
-- Update documentation
-
----
-
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](../LICENSE) file for details.
-
----
-
-## 🙏 Acknowledgments
+## Acknowledgments
 
 ### Technologies
 - **React**: Frontend library for building user interfaces
@@ -287,16 +207,3 @@ This project is licensed under the MIT License - see the [LICENSE](../LICENSE) f
 
 ### Academic Context
 Developed as part of the **LLM's and Beyond '25** seminar, demonstrating modern frontend development practices with AI integration.
-
----
-
-## 📞 Support
-
-For questions or issues:
-- Check the main [README.md](../README.md)
-- Review backend documentation in `backend/README.md`
-- Create an issue in the repository
-
----
-
-*Redmerce Frontend - Modern React interface for AI-powered e-commerce* 

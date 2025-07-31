@@ -2,7 +2,7 @@
 
 A Flask-based backend service for Redmerce, integrating smolagents, Perplexity API, and OpenAI GPT for intelligent product search, recommendations, and conversational shopping experiences.
 
-## 🎯 Overview
+## Overview
 
 The Redmerce backend serves as the AI-powered engine that processes natural language queries, performs intelligent web searches, and generates personalized product recommendations. Built with Flask and integrated with cutting-edge AI technologies, it provides a robust REST API for the frontend application.
 
@@ -15,7 +15,7 @@ The Redmerce backend serves as the AI-powered engine that processes natural lang
 
 ---
 
-## 🚀 Features
+## Features
 
 ### AI-Powered Functionality
 - **Intelligent Product Search**: smolagents orchestrate search strategies
@@ -34,7 +34,7 @@ The Redmerce backend serves as the AI-powered engine that processes natural lang
 
 ---
 
-## 🏗️ Architecture
+## Architecture
 
 ### Service Architecture
 ```
@@ -61,7 +61,7 @@ backend/
 
 ---
 
-## 🛠️ Setup & Installation
+## Setup & Installation
 
 ### Prerequisites
 - **Python** 3.8 or higher
@@ -115,7 +115,7 @@ SERP_API_KEY=your-serp-api-key
 
 ---
 
-## 🚦 Running the Backend
+## Running the Backend
 
 ### Development Mode
 ```bash
@@ -243,7 +243,7 @@ All endpoints return standardized error responses:
 
 ---
 
-## 🧠 Services Overview
+## Services Overview
 
 ### AgentService (services/agent_service.py)
 **Core AI Orchestration Service**
@@ -271,7 +271,7 @@ All endpoints return standardized error responses:
 
 ---
 
-## 🧪 Testing
+## Testing
 
 ### API Testing
 ```bash
@@ -305,31 +305,7 @@ curl -X POST http://localhost:5001/api/chat \
 
 ---
 
-## 🔧 Development
-
-### Code Style
-- **PEP 8**: Follow Python style guidelines
-- **Comments**: Comprehensive documentation for all functions
-- **Type Hints**: Use type annotations where appropriate
-- **Error Handling**: Robust exception handling
-
-### Adding Features
-1. **New Endpoints**: Add routes in `app.py`
-2. **Business Logic**: Implement in `services/` directory
-3. **Validation**: Add validators in `utils/validators.py`
-4. **Error Handling**: Use `utils/error_handler.py`
-5. **Testing**: Test thoroughly before deployment
-
-### Best Practices
-- **Environment Variables**: Never hardcode API keys
-- **Logging**: Use appropriate log levels
-- **Error Messages**: Provide helpful error information
-- **Security**: Validate and sanitize all inputs
-- **Performance**: Optimize database queries and API calls
-
----
-
-## 🛡️ Error Handling
+## Error Handling
 
 ### Common Error Types
 - **400 Bad Request**: Invalid request format or data
@@ -351,91 +327,8 @@ curl -X POST http://localhost:5001/api/chat \
 
 ---
 
-## 🚀 Performance Optimization
 
-### API Optimization
-- **Caching**: Cache frequently requested data
-- **Rate Limiting**: Implement API rate limiting
-- **Connection Pooling**: Optimize database connections
-- **Async Processing**: Use async for I/O operations
-
-### Monitoring
-- **Health Checks**: Regular service monitoring
-- **Logging**: Comprehensive request and error logging
-- **Metrics**: Track API performance and usage
-
----
-
-## 🛠️ Troubleshooting
-
-### Common Issues
-
-#### API Key Errors
-```bash
-# Check environment variables
-echo $OPENAI_API_KEY
-echo $PERPLEXITY_API_KEY
-
-# Verify .env file
-cat .env
-```
-
-#### Port Conflicts
-```bash
-# Check if port is in use
-lsof -i :5001
-
-# Change port in .env
-PORT=5002
-```
-
-#### CORS Issues
-- Verify CORS configuration in `app.py`
-- Check frontend proxy settings
-- Ensure correct origin URLs
-
-#### Dependency Issues
-```bash
-# Reinstall dependencies
-pip uninstall -r requirements.txt
-pip install -r requirements.txt
-```
-
-### Debug Mode
-```bash
-# Enable debug mode
-export FLASK_ENV=development
-export FLASK_DEBUG=1
-python app.py
-```
-
----
-
-## 🤝 Contributing
-
-### Development Workflow
-1. **Fork** the repository
-2. **Create** a feature branch
-3. **Implement** changes with proper comments
-4. **Test** thoroughly
-5. **Submit** a pull request
-
-### Code Quality Guidelines
-- Follow PEP 8 style guidelines
-- Add comprehensive comments
-- Include error handling
-- Write tests for new features
-- Update documentation
-
----
-
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](../LICENSE) file for details.
-
----
-
-## 🙏 Acknowledgments
+## Acknowledgments
 
 ### Technologies & Libraries
 - **Flask**: Python web framework
@@ -447,17 +340,3 @@ This project is licensed under the MIT License - see the [LICENSE](../LICENSE) f
 
 ### Academic Context
 Developed as part of the **LLM's and Beyond '25** seminar, demonstrating practical applications of AI agents and Large Language Models in modern software development.
-
----
-
-## 📞 Support
-
-For questions, issues, or contributions:
-- Check the main [README.md](../README.md)
-- Review frontend documentation in `frontend/README.md`
-- Create an issue in the repository
-- Contact the development team
-
----
-
-*Redmerce Backend - AI-powered e-commerce intelligence engine* 
