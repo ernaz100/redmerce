@@ -35,7 +35,7 @@ Redmerce demonstrates the power of Large Language Models (LLMs) and AI agents in
 
 ---
 
-## 🏗️ Architecture Overview
+## Architecture Overview
 
 ### System Architecture
 ```
@@ -59,7 +59,7 @@ Redmerce demonstrates the power of Large Language Models (LLMs) and AI agents in
 
 ---
 
-## 🛠️ Installation & Setup
+## Installation & Setup
 
 ### Prerequisites
 - **Node.js** 16+ (for frontend)
@@ -194,7 +194,7 @@ curl -X POST http://localhost:5001/api/chat \
 
 ---
 
-## 🗂️ Project Structure
+## Project Structure
 ```
 redmerce/
 ├── frontend/                 # React frontend application

@@ -144,7 +144,7 @@ curl http://localhost:5001/health
 
 ---
 
-## 🧩 API Documentation
+## API Documentation
 
 ### Endpoints Overview
 
